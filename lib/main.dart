@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor83,
           fontFamily: 'Poppins',
+          textSelectionTheme:
+              const TextSelectionThemeData(cursorColor: kPrimaryColor83),
           scaffoldBackgroundColor: kWhiteGreyColor83,
           iconTheme: const IconThemeData(color: kPrimaryColor83)),
       home: const HomeScreen(),
