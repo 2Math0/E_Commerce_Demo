@@ -8,7 +8,7 @@ import 'package:flutter_demo_task/ui/screens/favourite.dart';
 import 'package:flutter_demo_task/ui/screens/news.dart';
 import 'package:get/get.dart';
 
-import 'ui/widgets/bottom_nav_item.dart';
+import 'ui/widgets/items/bottom_nav_item.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,29 +34,32 @@ class MyApp extends StatelessWidget {
               const TextSelectionThemeData(cursorColor: kPrimaryColor83),
           scaffoldBackgroundColor: kWhiteGreyColor83,
           iconTheme: const IconThemeData(color: kPrimaryColor83)),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   final int cost = 32;
-  final List<Widget> screens = const [
+  final List<Widget> screens = [
     GroceryPage(),
-    NewsPage(),
-    FavouritePage(),
-    CartPage(),
+    const NewsPage(),
+    const FavouritePage(),
+    const CartPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: GetBuilder<Controller>(
-            init: Controller(),
-            builder: (controller) => screens[controller.indexPage]),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
+          child: GetBuilder<Controller>(
+              init: Controller(),
+              builder: (controller) => screens[controller.indexPage]),
+        ),
         floatingActionButton: FloatingActionButton(
           // FAB has fixed Size so its children should has fixed values also
 
@@ -108,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                     size: size,
                   ),
                   const SizedBox(
-                    width: 40,
+                    width: 5,
                   ),
                   BottomNavItem(
                     currentTab: controller.indexPage,

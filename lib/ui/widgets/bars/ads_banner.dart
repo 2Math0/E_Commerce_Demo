@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../constants/const_colors.dart';
-import '../constants/const_styles.dart';
-import 'rounded_corner.dart';
+import '../../constants/const_colors.dart';
+import '../../constants/const_styles.dart';
+import '../rounded_corner.dart';
 
 class AdsBanner extends StatelessWidget {
   const AdsBanner({
@@ -42,7 +42,7 @@ class AdsBanner extends StatelessWidget {
             children: [
               Text(
                 subText,
-                style: normalText.copyWith(color: kPrimaryColor83),
+                style: kNormalText.copyWith(color: kPrimaryColor83),
               ),
               Text.rich(
                 TextSpan(
@@ -94,7 +94,7 @@ class AdsBanner extends StatelessWidget {
               ),
               Text(
                 '* Available until $endDate',
-                style: smallText.copyWith(color: Colors.white70),
+                style: kSmallText.copyWith(color: Colors.white70),
               )
             ],
           )

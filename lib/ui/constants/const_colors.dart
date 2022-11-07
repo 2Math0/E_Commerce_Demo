@@ -13,6 +13,7 @@ const Color kLightBrownColor83 = Color(0xFFfbedd8);
 const Color kGreyColor83 = Color(0xFFe3ddd6);
 const Color kGreenColor83 = Color(0xFFcdf5e7);
 const Color kRedColor83 = Color(0xFFee6a61);
+const Color kPinkTextColor83 = Color(0xffca7d8c);
 const Color kBlueColor83 = Color(0xFF48b6da);
 const Color kRedTextColor83 = Color(0xFFb13e55);
 const Color kPurpleTextColor83 = Color(0xFF21114b);

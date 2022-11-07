@@ -17,25 +17,29 @@ class PageHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          width: size.width / 3,
-          decoration: BoxDecoration(
-              color: kRedColor83, borderRadius: BorderRadius.circular(40)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            child: Row(children: [
-              const Icon(
-                Icons.location_on_outlined,
-                color: kWhiteGreyColor83,
-              ),
-              Text(
-                location,
-                style: const TextStyle(
-                    color: kWhiteGreyColor83,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w300),
-              )
-            ]),
+        ClipPath(
+          clipper: MyClipper(),
+          child: Container(
+            color: kRedColor83,
+            width: 150,
+            // decoration: BoxDecoration(
+            //     color: kRedColor83, borderRadius: BorderRadius.circular(40)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              child: Row(children: [
+                const Icon(
+                  Icons.location_on_outlined,
+                  color: kWhiteGreyColor83,
+                ),
+                Text(
+                  location,
+                  style: const TextStyle(
+                      color: kWhiteGreyColor83,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300),
+                )
+              ]),
+            ),
           ),
         ),
         Container(
@@ -48,4 +52,26 @@ class PageHeader extends StatelessWidget {
       ],
     );
   }
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    double factor = 20.0;
+    var path = Path();
+    path.lineTo(0, size.height - factor);
+    // bottom rounded corner
+    path.quadraticBezierTo(0, size.height, factor, size.height);
+    path.lineTo(size.width - factor, size.height);
+    path.lineTo(size.width, size.height);
+
+    path.quadraticBezierTo(size.width, 20, factor * 4, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(factor, 0);
+    path.quadraticBezierTo(0, 0, 0, factor);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }

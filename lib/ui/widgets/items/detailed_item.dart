@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../constants/const_colors.dart';
-import '../constants/const_styles.dart';
-import 'rounded_corner.dart';
+import '../../constants/const_colors.dart';
+import '../../constants/const_styles.dart';
+import '../rounded_corner.dart';
 
 class DetailedItem extends StatelessWidget {
   const DetailedItem({
@@ -65,11 +65,11 @@ class DetailedItem extends StatelessWidget {
               children: <Widget>[
                 Text(
                   name,
-                  style: secTitleStyle,
+                  style: kSecTitleStyle,
                 ),
                 Text(
                   'Pieces $quantity',
-                  style: normalText,
+                  style: kNormalText,
                 ),
                 Row(
                   children: const [
@@ -81,7 +81,7 @@ class DetailedItem extends StatelessWidget {
                     SizedBox(width: 12),
                     Text(
                       '15 minutes away',
-                      style: smallText,
+                      style: kSmallText,
                     ),
                     SizedBox(width: 10),
                   ],

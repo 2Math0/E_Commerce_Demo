@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_task/ui/widgets/rounded_corner.dart';
 
-import '../constants/const_colors.dart';
-import '../constants/const_styles.dart';
+import '../../constants/const_colors.dart';
+import '../../constants/const_styles.dart';
 
 class AddressCard extends StatelessWidget {
   const AddressCard({
@@ -45,12 +45,12 @@ class AddressCard extends StatelessWidget {
             children: [
               Text(
                 addressType,
-                style: titleStyle,
+                style: kTitleStyle,
               ),
-              Text(address, style: smallText),
+              Text(address, style: kSmallText),
               Text(
                 streetNumber,
-                style: smallText,
+                style: kSmallText,
               ),
             ],
           )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants/const_styles.dart';
-import 'rounded_corner.dart';
+import '../../constants/const_styles.dart';
+import '../rounded_corner.dart';
 
 class ItemContainer extends StatelessWidget {
   const ItemContainer({
@@ -25,7 +25,7 @@ class ItemContainer extends StatelessWidget {
           const SizedBox(
             height: 6,
           ),
-          Text(name, style: normalText),
+          Text(name, style: kNormalText),
         ],
       ),
     );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const TextStyle titleStyle =
+const TextStyle kTitleStyle =
     TextStyle(fontWeight: FontWeight.w600, fontSize: 12);
 
-const TextStyle secTitleStyle =
+const TextStyle kSecTitleStyle =
     TextStyle(fontWeight: FontWeight.w600, fontSize: 11);
 
-const TextStyle smallText = TextStyle(fontSize: 9);
-const TextStyle normalText = TextStyle(fontSize: 12);
+const TextStyle kSmallText = TextStyle(fontSize: 9);
+const TextStyle kNormalText = TextStyle(fontSize: 12);
