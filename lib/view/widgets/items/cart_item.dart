@@ -10,20 +10,22 @@ class CartItem extends StatelessWidget {
     Key? key,
     required this.size,
     required this.name,
-    required this.quantity,
+    required this.measure,
     required this.price,
     required this.itemColor,
+    required this.quantity,
   }) : super(key: key);
 
   final Size size;
   final String name;
-  final int quantity;
+  final String measure;
   final int price;
   final Color itemColor;
+  final int quantity;
 
-  String get quantityFixer => (quantity / 1000) > 1
-      ? '${(quantity / 1000).toStringAsFixed(1)} Kilos'
-      : '$quantity Grams';
+  // String get quantityFixer => (weight / 1000) > 1
+  //     ? '${(weight / 1000).toStringAsFixed(1)} Kilos'
+  //     : '$weight Grams';
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,7 +43,7 @@ class CartItem extends StatelessWidget {
                 children: [
                   Text(name, style: kNormalText),
                   Text(
-                    quantityFixer,
+                    measure,
                     style: kSmallText.copyWith(color: Colors.black54),
                   ),
                   Text(
@@ -53,7 +55,7 @@ class CartItem extends StatelessWidget {
               ),
             ],
           ),
-          NumericalBar(size: size),
+          NumericalBar(size: size, quantity: quantity),
         ],
       ),
     );
