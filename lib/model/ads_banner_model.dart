@@ -4,18 +4,19 @@
 
 import 'dart:convert';
 
-AdsBanner adsBannerFromJson(String str) => AdsBanner.fromJson(json.decode(str));
+AdsBannerModel adsBannerFromJson(String str) =>
+    AdsBannerModel.fromJson(json.decode(str));
 
-String adsBannerToJson(AdsBanner data) => json.encode(data.toJson());
+String adsBannerToJson(AdsBannerModel data) => json.encode(data.toJson());
 
-class AdsBanner {
-  AdsBanner({
+class AdsBannerModel {
+  AdsBannerModel({
     required this.adBanner,
   });
 
   AdBanner adBanner;
 
-  factory AdsBanner.fromJson(Map<String, dynamic> json) => AdsBanner(
+  factory AdsBannerModel.fromJson(Map<String, dynamic> json) => AdsBannerModel(
         adBanner: AdBanner.fromJson(json["ad_banner"]),
       );
 

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_task/json_objs.dart';
+import 'package:flutter_demo_task/model/address_model.dart';
+import 'package:flutter_demo_task/model/ads_banner_model.dart';
+import 'package:flutter_demo_task/model/daily_deals_model.dart';
 
-import '../constants/const_colors.dart';
+import '../../model/categories_model.dart';
 import '../constants/const_styles.dart';
 import '../widgets/bars/ads_banner.dart';
 import '../widgets/bars/search_bar.dart';
@@ -10,7 +14,15 @@ import '../widgets/items/item_container.dart';
 import '../widgets/page_header.dart';
 
 class GroceryPage extends StatelessWidget {
-  const GroceryPage({Key? key}) : super(key: key);
+  GroceryPage({Key? key}) : super(key: key);
+
+  final List<AddressElement> addressElementList =
+      addressFromJson(addressJson).address;
+  final List<Category> categoriesList =
+      categoriesFromJson(categoriesJson).categories;
+  final List<DayDeal> dailyDealsList =
+      dailyDealsFromJson(dailyDealsJson).dayDeals;
+  final AdBanner adBanner = adsBannerFromJson(adBannerJson).adBanner;
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +41,17 @@ class GroceryPage extends StatelessWidget {
           SizedBox(
             height: 55,
             width: double.infinity,
-            child: ListView(
+            child: ListView.builder(
+              itemCount: addressElementList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return AddressCard(
+                    size: size,
+                    color: addressElementList[index].icon,
+                    addressType: addressElementList[index].type,
+                    address: addressElementList[index].street,
+                    streetNumber: addressElementList[index].streetNumber);
+              },
               scrollDirection: Axis.horizontal,
-              children: [
-                AddressCard(
-                  size: size,
-                  addressType: 'Home Address',
-                  color: kLightBrownColor83,
-                  address: 'Mustafa St. NO:2',
-                  streetNumber: 'Street x12',
-                ),
-                AddressCard(
-                  size: size,
-                  addressType: 'Office Address',
-                  color: kLightBrownColor83,
-                  address: 'Mustafa St. NO:2',
-                  streetNumber: 'Street x12',
-                ),
-                AddressCard(
-                  size: size,
-                  addressType: 'Home Address',
-                  color: kLightBrownColor83,
-                  address: 'Mustafa St. NO:2',
-                  streetNumber: 'Street x12',
-                ),
-              ],
             ),
           ),
           const SizedBox(height: 24),
@@ -73,18 +71,13 @@ class GroceryPage extends StatelessWidget {
           const SizedBox(height: 20),
           SizedBox(
             height: size.width / 4,
-            child: ListView(
+            child: ListView.builder(
+              itemCount: categoriesList.length,
+              itemBuilder: (BuildContext context, int index) => ItemContainer(
+                  size: size,
+                  color: categoriesList[index].icon,
+                  name: categoriesList[index].name),
               scrollDirection: Axis.horizontal,
-              children: [
-                ItemContainer(
-                    size: size, color: kLightPinkColor83, name: 'Steak'),
-                ItemContainer(
-                    size: size, color: kYellowColor83, name: 'Vegetables'),
-                ItemContainer(
-                    size: size, color: kPurpleColor83, name: 'Beverage'),
-                ItemContainer(size: size, color: kBlueColor83, name: 'Fish'),
-                ItemContainer(size: size, color: kPinkColor83, name: 'Juice'),
-              ],
             ),
           ),
           const SizedBox(height: 24),
@@ -95,40 +88,31 @@ class GroceryPage extends StatelessWidget {
           const SizedBox(height: 20),
           SizedBox(
             height: size.width / 4,
-            child: ListView(
+            child: ListView.builder(
+              itemCount: dailyDealsList.length,
+              itemBuilder: (BuildContext context, int index) => DetailedItem(
+                size: size,
+                color: dailyDealsList[index].icon,
+                name: dailyDealsList[index].name,
+                location: dailyDealsList[index].distance,
+                price: dailyDealsList[index].price,
+                lastPrice: dailyDealsList[index].lastPrice,
+                quantity: dailyDealsList[index].quantity,
+                isFavourite: dailyDealsList[index].favourite,
+              ),
               scrollDirection: Axis.horizontal,
-              children: [
-                DetailedItem(
-                  size: size,
-                  color: kLightBrownColor83,
-                  name: 'Summer Sun Ice Cream Pack',
-                  lastPrice: 18,
-                  location: '15 minutes',
-                  price: 12,
-                  quantity: 5,
-                ),
-                DetailedItem(
-                  size: size,
-                  color: kGreenColor83,
-                  name: 'Summer Sun Ice Cream Pack',
-                  lastPrice: 18,
-                  location: '15 minutes',
-                  price: 12,
-                  quantity: 5,
-                ),
-              ],
             ),
           ),
           const SizedBox(height: 24),
           AdsBanner(
               size: size,
-              color: kLightPinkColor83,
-              subText: 'Mega',
-              title: 'Whopper',
-              price: 17,
-              lastPrice: 32,
-              endDate: '24 December 2020',
-              textColor: kPurpleTextColor83)
+              color: adBanner.icon,
+              subText: adBanner.subText,
+              title: adBanner.title,
+              price: adBanner.price,
+              lastPrice: adBanner.lastPrice,
+              endDate: adBanner.endDate,
+              textColor: adBanner.textColor)
         ],
       ),
     );

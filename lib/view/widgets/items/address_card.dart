@@ -15,7 +15,7 @@ class AddressCard extends StatelessWidget {
   }) : super(key: key);
 
   final Size size;
-  final Color color;
+  final String color;
   final String addressType;
   final String address;
   final String streetNumber;
@@ -31,11 +31,11 @@ class AddressCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: Row(children: [
-          const Padding(
-            padding: EdgeInsets.all(6.0),
+          Padding(
+            padding: const EdgeInsets.all(6.0),
             child: ColoredRoundedSquare(
               edge: 40,
-              color: kGreyColor83,
+              color: Color(int.parse("0xFF$color")),
             ),
           ),
           const SizedBox(width: 8),
@@ -45,7 +45,7 @@ class AddressCard extends StatelessWidget {
             children: [
               Text(
                 addressType,
-                style: kTitleStyle,
+                style: kSecTitleStyle,
               ),
               Text(address, style: kSmallText),
               Text(

@@ -12,7 +12,7 @@ class ItemContainer extends StatelessWidget {
   }) : super(key: key);
 
   final Size size;
-  final Color color;
+  final String color;
   final String name;
 
   @override
@@ -21,7 +21,8 @@ class ItemContainer extends StatelessWidget {
       padding: const EdgeInsets.only(right: 24.0),
       child: Column(
         children: [
-          ColoredRoundedSquare(edge: size.width / 7, color: color),
+          ColoredRoundedSquare(
+              edge: size.width / 7, color: Color(int.parse("0xFF$color"))),
           const SizedBox(
             height: 6,
           ),

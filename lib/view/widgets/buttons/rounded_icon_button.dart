@@ -6,15 +6,17 @@ class RoundedIconBtn extends StatelessWidget {
     required this.bgColor,
     required this.icon,
     required this.iconColor,
+    required this.onTap,
   }) : super(key: key);
 
   final Color bgColor;
   final IconData icon;
   final Color iconColor;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         width: 30,
         height: 30,

@@ -18,8 +18,8 @@ class AdsBanner extends StatelessWidget {
   }) : super(key: key);
 
   final Size size;
-  final Color color;
-  final Color textColor;
+  final String color;
+  final String textColor;
   final String subText;
   final String title;
   final int price;
@@ -32,7 +32,7 @@ class AdsBanner extends StatelessWidget {
       edge: size.width,
       isSquare: false,
       height: size.height * 0.2,
-      color: color,
+      color: Color(int.parse("0xFF$color")),
       child: Row(
         children: [
           SizedBox(width: size.width / 2.8),
@@ -48,7 +48,7 @@ class AdsBanner extends StatelessWidget {
                 TextSpan(
                     text: title.toUpperCase().substring(0, title.length - 2),
                     style: TextStyle(
-                        color: textColor,
+                        color: Color(int.parse("0xFF$textColor")),
                         fontWeight: FontWeight.w700,
                         fontSize: 32),
                     children: [
@@ -66,7 +66,7 @@ class AdsBanner extends StatelessWidget {
                               .toUpperCase()
                               .substring(title.length - 1, title.length),
                           style: TextStyle(
-                              color: textColor,
+                              color: Color(int.parse("0xFF$textColor")),
                               fontWeight: FontWeight.w700,
                               fontSize: 32))
                     ]),

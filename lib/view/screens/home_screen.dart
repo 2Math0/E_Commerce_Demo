@@ -14,21 +14,25 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   final List<Widget> screens = [
-    const GroceryPage(),
+    GroceryPage(),
     const NewsPage(),
-    const FavouritePage(),
-    const CartPage(),
+    FavouritePage(),
+    CartPage(),
   ];
 
   final CartCostController cartCostController = Get.find<CartCostController>();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
-          child: GetBuilder<Controller>(
-              builder: (controller) => screens[controller.indexPage]),
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
+            child: GetBuilder<Controller>(
+                builder: (controller) => screens[controller.indexPage]),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           // FAB has fixed Size so its children should has fixed values also
@@ -45,10 +49,11 @@ class HomeScreen extends StatelessWidget {
                     size: 25,
                   )),
               Center(
-                  child: Text(
-                '\$${cartCostController.totalCost.value}',
-                style: const TextStyle(fontSize: 12, fontFamily: 'Helvetica'),
-              )),
+                  child: Obx(() => Text(
+                        '\$${cartCostController.totalCost.value}',
+                        style: const TextStyle(
+                            fontSize: 12, fontFamily: 'Helvetica'),
+                      ))),
             ],
           ),
         ),
@@ -79,9 +84,7 @@ class HomeScreen extends StatelessWidget {
                     position: 1,
                     size: size,
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
+                  const SizedBox(width: 1),
                   BottomNavItem(
                     currentTab: controller.indexPage,
                     icon: Icons.favorite_outline_rounded,

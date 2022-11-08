@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_task/controller/favourite_controller.dart';
+import 'package:get/get.dart';
 
 import '../../constants/const_colors.dart';
 import '../../constants/const_styles.dart';
 import '../rounded_corner.dart';
 
 class DetailedItem extends StatelessWidget {
-  const DetailedItem({
+  DetailedItem({
     Key? key,
     required this.size,
     required this.color,
@@ -14,15 +16,20 @@ class DetailedItem extends StatelessWidget {
     required this.price,
     required this.lastPrice,
     required this.quantity,
+    required this.isFavourite,
   }) : super(key: key);
 
   final Size size;
-  final Color color;
+  final String color;
   final String name;
   final String location;
   final double price;
   final double lastPrice;
   final int quantity;
+  bool isFavourite;
+
+  final FavouriteController favouriteController =
+      Get.find<FavouriteController>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,9 @@ class DetailedItem extends StatelessWidget {
           SizedBox(
             child: Stack(
               children: [
-                ColoredRoundedSquare(edge: size.width / 4, color: color),
+                ColoredRoundedSquare(
+                    edge: size.width / 4,
+                    color: Color(int.parse("0xFF$color"))),
                 Positioned(
                     top: 0,
                     left: 0,
@@ -45,10 +54,32 @@ class DetailedItem extends StatelessWidget {
                         width: 24,
                         decoration: const BoxDecoration(
                             color: kWhiteGreyColor83, shape: BoxShape.circle),
-                        child: const Icon(
-                          Icons.favorite,
-                          color: kRedColor83,
-                          size: 12,
+                        child: GetBuilder<FavouriteController>(
+                          builder: (controller) => IconButton(
+                            icon: Icon(
+                              isFavourite
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline,
+                              color: isFavourite ? kRedColor83 : kGreyColor83,
+                              size: 12,
+                            ),
+                            onPressed: () {
+                              isFavourite
+                                  ? favouriteController
+                                      .removeFromFavourites(name)
+                                  : favouriteController.addToFavourites(
+                                      DetailedItem(
+                                          size: size,
+                                          color: color,
+                                          name: name,
+                                          location: location,
+                                          price: price,
+                                          lastPrice: lastPrice,
+                                          quantity: quantity,
+                                          isFavourite: isFavourite));
+                              isFavourite = !isFavourite;
+                            },
+                          ),
                         ),
                       ),
                     ))

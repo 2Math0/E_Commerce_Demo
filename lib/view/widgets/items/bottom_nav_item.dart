@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class BottomNavItem extends StatelessWidget {
@@ -22,7 +20,6 @@ class BottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('${size.width * 0.018}');
     return MaterialButton(
       minWidth: 40,
       onPressed: onPress,
@@ -48,7 +45,7 @@ class BottomNavItem extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: size.height * 0.004,
+              height: size.height * 0.002,
             ),
             Text(
               txt,
@@ -56,7 +53,7 @@ class BottomNavItem extends StatelessWidget {
                 color: currentTab == position
                     ? IconTheme.of(context).color
                     : Colors.grey,
-                fontSize: size.width * 0.018 < 8 ? size.width * 0.018 : 8,
+                fontSize: size.width * 0.03 < 14 ? size.width * 0.03 : 14,
               ),
             ),
           ],

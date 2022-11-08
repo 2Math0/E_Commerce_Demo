@@ -1,12 +1,16 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../controller/cart_cost_controller.dart';
 import '../../constants/const_colors.dart';
 import '../../constants/const_styles.dart';
-import '../bars/numerical_bar.dart';
+import '../buttons/rounded_icon_button.dart';
 import '../rounded_corner.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({
+  CartItem({
     Key? key,
     required this.size,
     required this.name,
@@ -20,12 +24,15 @@ class CartItem extends StatelessWidget {
   final String name;
   final String measure;
   final int price;
-  final Color itemColor;
+  final String itemColor;
   final int quantity;
 
   // String get quantityFixer => (weight / 1000) > 1
   //     ? '${(weight / 1000).toStringAsFixed(1)} Kilos'
   //     : '$weight Grams';
+
+  final CartCostController cartCostController = Get.find<CartCostController>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +42,9 @@ class CartItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              ColoredRoundedSquare(edge: size.width / 7, color: itemColor),
+              ColoredRoundedSquare(
+                  edge: size.width / 7,
+                  color: Color(int.parse("0xFF$itemColor"))),
               const SizedBox(width: 16),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,7 +64,30 @@ class CartItem extends StatelessWidget {
               ),
             ],
           ),
-          NumericalBar(size: size, quantity: quantity),
+          Row(
+            children: [
+              RoundedIconBtn(
+                  onTap: () {
+                    log('clicked');
+                    log(cartCostController.totalCost.value.toString());
+                    cartCostController.decrement(price);
+                  },
+                  icon: Icons.remove_rounded,
+                  bgColor: kLightBlueColor83,
+                  iconColor: kBlueColor83),
+              SizedBox(width: size.width * 0.05),
+              Text(
+                "$quantity",
+                style: kTitleStyle.copyWith(fontSize: 16),
+              ),
+              SizedBox(width: size.width * 0.05),
+              RoundedIconBtn(
+                  onTap: () => cartCostController.increment(price),
+                  icon: Icons.add_rounded,
+                  bgColor: kLightBlueColor83,
+                  iconColor: kBlueColor83),
+            ],
+          )
         ],
       ),
     );

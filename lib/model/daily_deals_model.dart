@@ -42,8 +42,8 @@ class DayDeal {
   String name;
   int quantity;
   String distance;
-  int price;
-  int lastPrice;
+  double price;
+  double lastPrice;
 
   factory DayDeal.fromJson(Map<String, dynamic> json) => DayDeal(
         icon: json["icon"],

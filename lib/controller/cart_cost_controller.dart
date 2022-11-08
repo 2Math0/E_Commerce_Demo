@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 
 class CartCostController extends GetxController {
-  RxInt totalCost = 0.obs;
+  RxInt totalCost = 91.obs;
 
-  void changeCost(value) {
-    totalCost = value;
-  }
+  void increment(value) => totalCost += value;
+  void decrement(value) => totalCost -= value;
 }
