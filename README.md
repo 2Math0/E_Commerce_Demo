@@ -23,11 +23,11 @@ Contains the UI Design of E-Commerce App
 
 ### Design
 
-<p>
-<img src="https://user-images.githubusercontent.com/50797015/200548053-9a39a4a5-ff8a-408d-836a-ef6c17461a82.jpg" width="250px"/>
-<img src="https://user-images.githubusercontent.com/50797015/200548061-5c954db0-f709-4cfa-8c2d-638ba21f5a45.jpg" width="250px"/>
-<img src="https://user-images.githubusercontent.com/50797015/200548065-d595b8b4-975f-42ed-8cda-423c59be7adc.jpg" width="250px"/>
-<img src="https://user-images.githubusercontent.com/50797015/200548518-f158f677-9595-40ef-8b66-daa9820c8e8d.jpg" width="250px"/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/50797015/200548053-9a39a4a5-ff8a-408d-836a-ef6c17461a82.jpg" width="21%"/>
+<img src="https://user-images.githubusercontent.com/50797015/200548061-5c954db0-f709-4cfa-8c2d-638ba21f5a45.jpg" width="21%"/>
+<img src="https://user-images.githubusercontent.com/50797015/200548065-d595b8b4-975f-42ed-8cda-423c59be7adc.jpg" width="21%"/>
+<img src="https://user-images.githubusercontent.com/50797015/200548518-f158f677-9595-40ef-8b66-daa9820c8e8d.jpg" width="21%"/>
 </p>
 
 ### Used Dependecies
