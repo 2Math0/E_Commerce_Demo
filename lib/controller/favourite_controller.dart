@@ -6,8 +6,10 @@ class FavouriteController extends GetxController {
   final Map _favourites = {};
 
   Map get favourites => _favourites;
+  List get keys => _favourites.keys.toList();
 
   void addToFavourites(DetailedItem detailedItem) {
+    detailedItem.isFavourite = true;
     _favourites[detailedItem.name] = detailedItem;
     update();
   }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_task/controller/favourite_controller.dart';
 import 'package:flutter_demo_task/json_objs.dart';
 import 'package:flutter_demo_task/model/address_model.dart';
 import 'package:flutter_demo_task/model/ads_banner_model.dart';
 import 'package:flutter_demo_task/model/daily_deals_model.dart';
+import 'package:get/get.dart';
 
 import '../../model/categories_model.dart';
 import '../constants/const_styles.dart';
@@ -90,16 +92,23 @@ class GroceryPage extends StatelessWidget {
             height: size.width / 4,
             child: ListView.builder(
               itemCount: dailyDealsList.length,
-              itemBuilder: (BuildContext context, int index) => DetailedItem(
-                size: size,
-                color: dailyDealsList[index].icon,
-                name: dailyDealsList[index].name,
-                location: dailyDealsList[index].distance,
-                price: dailyDealsList[index].price,
-                lastPrice: dailyDealsList[index].lastPrice,
-                quantity: dailyDealsList[index].quantity,
-                isFavourite: dailyDealsList[index].favourite,
-              ),
+              itemBuilder: (BuildContext context, int index) {
+                final fav = Get.put(FavouriteController());
+                return DetailedItem(
+                  size: size,
+                  color: dailyDealsList[index].icon,
+                  name: dailyDealsList[index].name,
+                  location: dailyDealsList[index].distance,
+                  price: dailyDealsList[index].price,
+                  lastPrice: dailyDealsList[index].lastPrice,
+                  quantity: dailyDealsList[index].quantity,
+                  isFavourite: fav.keys.isNotEmpty
+                      ? fav.keys.contains(dailyDealsList[index].name)
+                          ? true
+                          : dailyDealsList[index].favourite
+                      : dailyDealsList[index].favourite,
+                );
+              },
               scrollDirection: Axis.horizontal,
             ),
           ),

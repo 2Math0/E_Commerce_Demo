@@ -6,8 +6,8 @@ import '../../controller/controller.dart';
 import '../constants/const_colors.dart';
 import '../widgets/items/bottom_nav_item.dart';
 import 'cart.dart';
-import 'category.dart';
 import 'favourite.dart';
+import 'grocery.dart';
 import 'news.dart';
 
 class HomeScreen extends StatelessWidget {
