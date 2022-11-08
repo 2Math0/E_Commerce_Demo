@@ -36,7 +36,7 @@ class CartElement {
 
   String name;
   String measure;
-  int price;
+  double price;
   String itemColor;
   int quantity;
 

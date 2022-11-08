@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../controller/cart_controller.dart';
 import '../../../controller/cart_cost_controller.dart';
 import '../../constants/const_colors.dart';
 import '../../constants/const_styles.dart';
@@ -23,7 +22,7 @@ class CartItem extends StatelessWidget {
   final Size size;
   final String name;
   final String measure;
-  final int price;
+  final double price;
   final String itemColor;
   final int quantity;
 
@@ -32,6 +31,7 @@ class CartItem extends StatelessWidget {
   //     : '$weight Grams';
 
   final CartCostController cartCostController = Get.find<CartCostController>();
+  final CartController cartController = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +68,12 @@ class CartItem extends StatelessWidget {
             children: [
               RoundedIconBtn(
                   onTap: () {
-                    log('clicked');
-                    log(cartCostController.totalCost.value.toString());
-                    cartCostController.decrement(price);
+                    Get.log('clicked');
+                    Get.log(cartCostController.totalCost.value.toString());
+                    if (cartController.quantitiesMap[name] > 0) {
+                      cartCostController.decrement(price);
+                      cartController.decrementQuantity(name);
+                    }
                   },
                   icon: Icons.remove_rounded,
                   bgColor: kLightBlueColor83,
@@ -82,7 +85,10 @@ class CartItem extends StatelessWidget {
               ),
               SizedBox(width: size.width * 0.05),
               RoundedIconBtn(
-                  onTap: () => cartCostController.increment(price),
+                  onTap: () {
+                    cartCostController.increment(price);
+                    cartController.incrementQuantity(name);
+                  },
                   icon: Icons.add_rounded,
                   bgColor: kLightBlueColor83,
                   iconColor: kBlueColor83),
