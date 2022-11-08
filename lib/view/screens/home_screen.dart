@@ -41,19 +41,20 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {},
           child: Stack(
             children: [
-              const Positioned(
-                  bottom: 0,
-                  right: 15,
-                  child: Icon(
-                    Icons.shopping_cart_outlined,
-                    size: 25,
-                  )),
-              Center(
-                  child: Obx(() => Text(
-                        '\$${cartCostController.totalCost.value}',
-                        style: const TextStyle(
-                            fontSize: 12, fontFamily: 'Helvetica'),
-                      ))),
+              Positioned(
+                bottom: 7,
+                right: 7,
+                child: Image.asset('assets/icons/cart.png'),
+              ),
+              Positioned(
+                top: 16,
+                left: 14,
+                child: Obx(() => Text(
+                      '\$${cartCostController.totalCost.value}',
+                      style: const TextStyle(
+                          fontSize: 12, fontFamily: 'Helvetica'),
+                    )),
+              ),
             ],
           ),
         ),
@@ -70,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   BottomNavItem(
                     currentTab: controller.indexPage,
-                    icon: Icons.store,
+                    assetImage: 'assets/icons/grocery.png',
                     onPress: () => controller.changeSelectedValue(0),
                     txt: 'Grocery',
                     position: 0,
@@ -78,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   BottomNavItem(
                     currentTab: controller.indexPage,
-                    icon: Icons.notifications_outlined,
+                    assetImage: 'assets/icons/notifications.png',
                     onPress: () => controller.changeSelectedValue(1),
                     txt: 'News',
                     position: 1,
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(width: 1),
                   BottomNavItem(
                     currentTab: controller.indexPage,
-                    icon: Icons.favorite_outline_rounded,
+                    assetImage: 'assets/icons/favourite.png',
                     onPress: () => controller.changeSelectedValue(2),
                     txt: 'Favourites',
                     position: 2,
@@ -95,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   BottomNavItem(
                     currentTab: controller.indexPage,
-                    icon: Icons.account_balance_wallet_outlined,
+                    assetImage: 'assets/icons/wallet.png',
                     onPress: () => controller.changeSelectedValue(3),
                     txt: 'Cart',
                     position: 3,

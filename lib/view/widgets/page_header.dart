@@ -17,29 +17,30 @@ class PageHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ClipPath(
-          clipper: MyClipper(),
-          child: Container(
-            color: kRedColor83,
-            width: 150,
-            // decoration: BoxDecoration(
-            //     color: kRedColor83, borderRadius: BorderRadius.circular(40)),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              child: Row(children: [
-                const Icon(
-                  Icons.location_on_outlined,
-                  color: kWhiteGreyColor83,
-                ),
-                Text(
-                  location,
-                  style: const TextStyle(
-                      color: kWhiteGreyColor83,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300),
-                )
-              ]),
-            ),
+        Container(
+          width: 150,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/icons/location_bg.png"),
+                fit: BoxFit.cover),
+          ),
+          // decoration: BoxDecoration(
+          //     color: kRedColor83, borderRadius: BorderRadius.circular(40)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: Row(children: [
+              const Icon(
+                Icons.location_on_outlined,
+                color: kWhiteGreyColor83,
+              ),
+              Text(
+                location,
+                style: const TextStyle(
+                    color: kWhiteGreyColor83,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w300),
+              )
+            ]),
           ),
         ),
         Container(

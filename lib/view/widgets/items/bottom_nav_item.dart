@@ -5,7 +5,8 @@ class BottomNavItem extends StatelessWidget {
   final int position;
   final int currentTab;
   final void Function() onPress;
-  final IconData icon;
+  // final IconData icon;
+  final String assetImage;
   final Size size;
 
   const BottomNavItem({
@@ -14,8 +15,8 @@ class BottomNavItem extends StatelessWidget {
     required this.txt,
     required this.position,
     required this.onPress,
-    required this.icon,
     required this.size,
+    required this.assetImage,
   }) : super(key: key);
 
   @override
@@ -34,14 +35,23 @@ class BottomNavItem extends StatelessWidget {
                     maxHeight: size.height * 0.08,
                     maxWidth: size.height * 0.06),
                 child: Center(
-                  child: Icon(
-                    icon,
-                    size: (size.width * 0.075) < 30 ? size.width * 0.075 : 30,
+                    child: SizedBox(
+                  height: (size.width * 0.08) < 32 ? size.width * 0.08 : 32,
+                  child: Image.asset(
+                    assetImage,
                     color: currentTab == position
                         ? IconTheme.of(context).color
                         : Colors.grey,
                   ),
-                ),
+                )
+                    // Icon(
+                    //   icon,
+                    //   size: (size.width * 0.075) < 30 ? size.width * 0.075 : 30,
+                    //   color: currentTab == position
+                    //       ? IconTheme.of(context).color
+                    //       : Colors.grey,
+                    // ),
+                    ),
               ),
             ),
             SizedBox(
