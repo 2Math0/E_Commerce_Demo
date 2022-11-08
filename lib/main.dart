@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
 
   final int cost = 32;
   final List<Widget> screens = [
-    GroceryPage(),
+    const GroceryPage(),
     const NewsPage(),
     const FavouritePage(),
     const CartPage(),
@@ -85,7 +85,6 @@ class HomeScreen extends StatelessWidget {
         // Docked make the Float in the middle of Bottom Navigation
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: GetBuilder<Controller>(
-          init: Controller(),
           builder: (controller) => BottomAppBar(
             child: Container(
               height: size.height * 0.1,
