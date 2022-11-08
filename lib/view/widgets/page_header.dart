@@ -14,42 +14,47 @@ class PageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        Container(
-          width: 150,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/icons/location_bg.png"),
-                fit: BoxFit.cover),
-          ),
-          // decoration: BoxDecoration(
-          //     color: kRedColor83, borderRadius: BorderRadius.circular(40)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            child: Row(children: [
-              const Icon(
-                Icons.location_on_outlined,
-                color: kWhiteGreyColor83,
+        const SizedBox(height: 38),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              width: 150,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/icons/location_bg.png"),
+                    fit: BoxFit.cover),
               ),
-              Text(
-                location,
-                style: const TextStyle(
+              // decoration: BoxDecoration(
+              //     color: kRedColor83, borderRadius: BorderRadius.circular(40)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                child: Row(children: [
+                  const Icon(
+                    Icons.location_on_outlined,
                     color: kWhiteGreyColor83,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w300),
-              )
-            ]),
-          ),
+                  ),
+                  Text(
+                    location,
+                    style: const TextStyle(
+                        color: kWhiteGreyColor83,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300),
+                  )
+                ]),
+              ),
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black, width: 1),
+                  shape: BoxShape.circle),
+            )
+          ],
         ),
-        Container(
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1),
-              shape: BoxShape.circle),
-        )
       ],
     );
   }

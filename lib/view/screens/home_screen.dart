@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
         body: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             child: GetBuilder<Controller>(
                 builder: (controller) => screens[controller.indexPage]),
           ),
@@ -47,8 +47,8 @@ class HomeScreen extends StatelessWidget {
                 child: Image.asset('assets/icons/cart.png'),
               ),
               Positioned(
-                top: 16,
-                left: 14,
+                top: 18,
+                left: 10,
                 child: Obx(() => Text(
                       '\$${cartCostController.totalCost.value}',
                       style: const TextStyle(

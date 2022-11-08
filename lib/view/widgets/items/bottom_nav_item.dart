@@ -35,14 +35,14 @@ class BottomNavItem extends StatelessWidget {
                     maxHeight: size.height * 0.08,
                     maxWidth: size.height * 0.06),
                 child: Center(
-                    child: SizedBox(
-                  height: (size.width * 0.08) < 32 ? size.width * 0.08 : 32,
-                  child: Image.asset(
-                    assetImage,
-                    color: currentTab == position
-                        ? IconTheme.of(context).color
-                        : Colors.grey,
-                  ),
+                    child: Image.asset(
+                  width: (size.width * 0.075) < 24 ? size.width * 0.075 : 24,
+                  fit: BoxFit.fitHeight,
+                  scale: 1.0,
+                  assetImage,
+                  color: currentTab == position
+                      ? IconTheme.of(context).color
+                      : Colors.grey,
                 )
                     // Icon(
                     //   icon,
