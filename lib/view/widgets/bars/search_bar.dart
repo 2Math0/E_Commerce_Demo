@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_task/ui/constants/const_styles.dart';
 
 import '../../constants/const_colors.dart';
+import '../../constants/const_styles.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({

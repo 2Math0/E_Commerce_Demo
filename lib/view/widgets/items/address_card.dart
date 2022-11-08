@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_task/ui/widgets/rounded_corner.dart';
 
 import '../../constants/const_colors.dart';
 import '../../constants/const_styles.dart';
+import '../rounded_corner.dart';
 
 class AddressCard extends StatelessWidget {
   const AddressCard({
